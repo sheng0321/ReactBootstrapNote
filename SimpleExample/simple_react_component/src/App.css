@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -34,6 +34,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

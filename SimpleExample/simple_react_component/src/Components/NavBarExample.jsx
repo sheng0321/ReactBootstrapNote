@@ -28,7 +28,7 @@ const NavBarExample = (props) => {
         }
     }
     return (
-        <NavBar expand='lg' bg='primary' data-bs-theme='dark' className='mb-4'>
+        <NavBar expand='lg' className='mb-4 border round' style={{ boxShadow: "0px 8px 15px -6px rgba(0,0,0,0.6)", backgroundColor: 'lightgray' }}>
             <Container  >
 
                 <NavBar.Brand href='#home' onClick={() => {
@@ -64,6 +64,7 @@ const NavBarExample = (props) => {
                 </Modal.Body>
 
             </Modal>
+            <hr />
         </NavBar >
     )
 }
