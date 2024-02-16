@@ -10,15 +10,29 @@ import FormsExample from "./Components/FormsExample";
 import AccordionExample from "./Components/AccordionExample";
 import AlertExample from "./Components/AlertExample";
 import LoadingButton from "./Components/LoadingButton";
+import ToggleButtonExample from "./Components/ToggleButtonExample";
+import CardExample from "./Components/CardExample";
+import DropdownExample from "./Components/DropdownExample";
+import ModalsExample from "./Components/ModalsExample";
+import NavBarExample from "./Components/NavBarExample";
+import Container from "react-bootstrap/esm/Container";
+import { useState } from "react";
 
 function App() {
+  const [page,setPage]=useState("AboutPage");
+  const handleNavPage=(thepage)=>{
+    setPage(thepage);
+   // alert(thepage);
+  }
   return (
     <div className="App">
-      <Example />
+      <NavBarExample setPage={(thepage)=>handleNavPage(thepage)} />
+      <Container>
+    {page == "AboutPage" &&  <Example />}
       <hr />
-      <AlertBootstrap />
+    {page == "HomePage" && <AlertBootstrap />}
       <hr />
-      <AlertDismissible />
+      { page == "ReportPage" && <AlertDismissible />}
       <hr />
       <VariantsExample />
       <hr />
@@ -35,6 +49,15 @@ function App() {
       <AlertExample />
       <hr />
       <LoadingButton />
+      <hr />
+      <ToggleButtonExample />
+      <hr />
+      <CardExample />
+      <hr />
+      <DropdownExample />
+      <hr />
+      <ModalsExample />
+      </Container>
     </div>
     
   );
