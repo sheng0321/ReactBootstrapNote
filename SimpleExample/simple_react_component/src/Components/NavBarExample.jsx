@@ -60,7 +60,7 @@ const NavBarExample = (props) => {
                     <Modal.Title>Waiting for your fob ...</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form.Control onChange={(e) => handleLogin(e)} autoFocus style={{ opacity: '10%' }} />
+                    <Form.Control onChange={(e) => handleLogin(e)} autoFocus style={{ opacity: '50%' }} />
                 </Modal.Body>
 
             </Modal>

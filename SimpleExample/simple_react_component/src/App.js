@@ -17,9 +17,22 @@ import ModalsExample from "./Components/ModalsExample";
 import NavBarExample from "./Components/NavBarExample";
 import Container from "react-bootstrap/esm/Container";
 import { useState } from "react";
+import Form from "react-bootstrap/Form";
 
 function App() {
   const [page,setPage]=useState("AboutPage");
+  //const [themeModal,setThemeModal]=useState("light");
+  const [isChecked,setIsChecked]=useState(false)
+  const handleSwitchChange=(e)=>{
+    setIsChecked(e.target.checked);
+    if (e.target.checked) {
+      document.documentElement.setAttribute('data-bs-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-bs-theme', 'light');
+    }
+    
+  }
+  
   const handleNavPage=(thepage)=>{
     setPage(thepage);
    // alert(thepage);
@@ -27,6 +40,12 @@ function App() {
   return (
     <div className="App">
       <NavBarExample setPage={(thepage)=>handleNavPage(thepage)} />
+      <Form.Check // prettier-ignore
+        type="switch"
+        checked ={isChecked}
+        onChange={handleSwitchChange}
+        label="Check this switch"
+      />
       <Container>
     {page == "AboutPage" &&  <Example />}
       <hr />

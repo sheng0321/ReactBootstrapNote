@@ -22,10 +22,10 @@ const CardExample = () => {
             <Form.Control className='mb-3' type='text' value={clockNo} onChange={handleKeyDown} autoFocus />
 
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant='top' src={`{clockNo}.jpg`} style={{ maxHeight: '30rem' }} ></Card.Img>
+                <Card.Img variant='top' src={`https://picsum.photos/200/200`} style={{ maxHeight: '30rem' }} ></Card.Img>
                 <Card.Body>
                     <Card.Title>Hello, world!</Card.Title>
-                    <Card.Text>
+                    <Card.Text style={{ textAlign: 'left' }} >
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, assumenda eaque? Fuga ullam veniam eaque doloribus ipsa illum quae adipisci!
                     </Card.Text>
                     <Button>Go Somewhere</Button>
