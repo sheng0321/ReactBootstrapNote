@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
-import NavBar from 'react-bootstrap/Navbar';
+import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/esm/Button';
@@ -11,6 +11,16 @@ const NavBarExample = (props) => {
     const { setPage } = props;
     const [user, SetUser] = useState('');
     const [showLoginModal, setShowLoginModal] = useState(false);
+    const [isChecked, setIsChecked] = useState(false)
+    const handleSwitchChange = (e) => {
+        setIsChecked(e.target.checked);
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+        }
+
+    }
     const handleClose = () => { setShowLoginModal(false); }
     const handleShow = () => { setShowLoginModal(true) }
     const handleLogin = (e) => {
@@ -28,23 +38,31 @@ const NavBarExample = (props) => {
         }
     }
     return (
-        <NavBar expand='lg' className='mb-4 border round' style={{ boxShadow: "0px 8px 15px -6px rgba(0,0,0,0.6)", backgroundColor: 'lightgray' }}>
+        <Navbar expand='lg' className='mb-4 border round' style={{ boxShadow: "0px 8px 15px -6px rgba(0,0,0,0.6)", backgroundColor: 'salmon ' }}>
             <Container  >
 
-                <NavBar.Brand href='#home' onClick={() => {
+                <Navbar.Brand href='#home' className='fs-3 text-light' onClick={() => {
                     user ?
                         setPage("HomePage") : alert("please log in first.")
 
-                }}>Welcome</NavBar.Brand>
-                <NavBar.Toggle aria-controls="responsive-navbar-nav" />
-                <NavBar.Collapse id="responsive-navbar-nav">
+                }}>Welcome</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className='me-auto'>
                         <Nav.Link href='#home' onClick={() => user ?
                             setPage("HomePage") : alert("please log in first.")}>Home</Nav.Link>
                         <Nav.Link href='#about' onClick={() => user ?
                             setPage("ReportPage") : alert("please log in first.")}>Report</Nav.Link>
                     </Nav>
-                </NavBar.Collapse>
+                </Navbar.Collapse>
+                <Form.Check // prettier-ignore
+                    type="switch"
+                    style={{ color: 'salmon' }}
+                    checked={isChecked}
+                    onChange={handleSwitchChange}
+                    label=" "
+
+                />
                 {!user ? <Button variant='outline-danger' onClick={handleShow} > Login</Button> :
                     <NavDropdown title={`Welcome ${user}`}>
                         <Nav.Item className='ms-1'>Profile</Nav.Item>
@@ -65,7 +83,7 @@ const NavBarExample = (props) => {
 
             </Modal>
             <hr />
-        </NavBar >
+        </Navbar >
     )
 }
 
